@@ -1,1 +1,71 @@
+1) Hello World
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() 
+{
+    // Declare a string to store the input
+    char s[100];
+    
+    // Read the input string
+    scanf("%[^\n]%*c", s);
+    
+    // Print "Hello, World!" on the first line
+    printf("Hello, World!\n");
+    
+    // Print the input string on the next line
+    printf("%s\n", s);
+    
+    return 0;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2) Playing with characters
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() 
+{
+    // Declare variables for character, string, and sentence
+    char ch;
+    char s[100];
+    char sen[100];
+    
+    // Read a single character
+    scanf("%c", &ch);
+    
+    // Consume the newline character left in the input buffer
+    scanf("\n");
+    
+    // Read a string (until first space)
+    scanf("%s", s);
+    
+    // Consume the newline character left in the input buffer
+    scanf("\n");
+    
+    // Read a full sentence (until newline)
+    scanf("%[^\n]%*c", sen);
+    
+    // Print the character
+    printf("%c\n", ch);
+    
+    // Print the string
+    printf("%s\n", s);
+    
+    // Print the sentence
+    printf("%s\n", sen);
+    
+    return 0;
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
