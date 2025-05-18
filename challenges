@@ -68,4 +68,392 @@ int main()
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+3) Sum and Difference of two numbers
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main()
+{
+    // Declare variables
+    int a, b;
+    float c, d;
+    
+    // Read two integers
+    scanf("%d %d", &a, &b);
+    
+    // Read two floating-point numbers
+    scanf("%f %f", &c, &d);
+    
+    // Print sum and difference of integers
+    printf("%d %d\n", a + b, a - b);
+    
+    // Print sum and difference of floats with one decimal place
+    printf("%.1f %.1f\n", c + d, c - d);
+    
+    return 0;
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+4) functions in c
+
+#include <stdio.h>
+
+/*
+ * Function to find the maximum of four integers
+ * Parameters: int a, int b, int c, int d
+ * Returns: maximum value among a, b, c, d
+ */
+int max_of_four(int a, int b, int c, int d) {
+    // Initialize max with the first number
+    int max = a;
+    
+    // Compare with other numbers
+    if (b > max) max = b;
+    if (c > max) max = c;
+    if (d > max) max = d;
+    
+    return max;
+}
+
+int main() {
+    // Declare variables for four integers
+    int a, b, c, d;
+    
+    // Read four integers
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+    
+    // Call function and store result
+    int ans = max_of_four(a, b, c, d);
+    
+    // Print the result
+    printf("%d\n", ans);
+    
+    return 0;
+}
+
+----------------------------------------------------------------------------------------------
+
+5) pointers in c
+
+#include <stdio.h>
+#include <stdlib.h>
+
+/*
+ * Function to update values using pointers
+ * Parameters: int *a (pointer to first integer), int *b (pointer to second integer)
+ * Updates: *a to sum of original *a and *b, *b to absolute difference of original *a and *b
+ */
+void update(int *a, int *b) {
+    // Store original values
+    int original_a = *a;
+    int original_b = *b;
+    
+    // Update *a to sum
+    *a = original_a + original_b;
+    
+    // Update *b to absolute difference
+    *b = abs(original_a - original_b);
+}
+
+int main() {
+    // Declare variables
+    int a, b;
+    
+    // Read two integers
+    scanf("%d %d", &a, &b);
+    
+    // Call update function with pointers to a and b
+    update(&a, &b);
+    
+    // Print updated values
+    printf("%d\n%d\n", a, b);
+    
+    return 0;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+6) Conditional statements in c
+
+#include <stdio.h>
+
+int main() {
+    // Declare variable
+    int n;
+    
+    // Read integer
+    scanf("%d", &n);
+    
+    // Check if n is between 1 and 9
+    if (n >= 1 && n <= 9) {
+        // Array of number names for simplicity
+        char *numbers[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        printf("%s\n", numbers[n - 1]);
+    } else if (n > 9) {
+        // Print for numbers greater than 9
+        printf("Greater than 9\n");
+    }
+    
+    return 0;
+}
+
+-------------------------------------------------------------------------------------
+7) for loop
+
+#include <stdio.h>
+
+int main() {
+    // Declare variable
+    int n;
+    
+    // Read integer
+    scanf("%d", &n);
+    
+    // Loop from 1 to n
+    for (int i = 1; i <= n; i++) {
+        // Check if i is between 1 and 9
+        if (i <= 9) {
+            // Array of number names
+            char *numbers[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+            printf("%s\n", numbers[i - 1]);
+        } else {
+            // Check if i is even or odd
+            if (i % 2 == 0) {
+                printf("even\n");
+            } else {
+                printf("odd\n");
+            }
+        }
+    }
+    
+    return 0;
+}
+
+-----------------------------------------------
+8)sum of digits of a five digit number
+
+#include <stdio.h>
+
+int main() {
+    // Declare variable
+    int n;
+    
+    // Read five-digit number
+    scanf("%d", &n);
+    
+    // Initialize sum
+    int sum = 0;
+    
+    // Extract each digit and add to sum
+    while (n > 0) {
+        sum += n % 10; // Get last digit
+        n /= 10;       // Remove last digit
+    }
+    
+    // Print sum
+    printf("%d\n", sum);
+    
+    return 0;
+}
+----------------------------------------------------------
+
+10)bitwise operators
+
+#include <stdio.h>
+
+/*
+ * Function to compute maximum bitwise AND, OR, XOR
+ * Parameters: int n (upper bound), int k (not used in this solution)
+ * Prints: maximum a & b, a | b, a ^ b for 1 <= a, b <= n, a != b
+ */
+void calculate_the_maximum(int n, int k) {
+    int max_and = 0, max_or = 0, max_xor = 0;
+    
+    // Iterate over all pairs (a, b) where 1 <= a, b <= n and a != b
+    for (int a = 1; a <= n; a++) {
+        for (int b = a + 1; b <= n; b++) {
+            // Compute bitwise operations
+            int current_and = a & b;
+            int current_or = a | b;
+            int current_xor = a ^ b;
+            
+            // Update maximums
+            if (current_and > max_and) max_and = current_and;
+            if (current_or > max_or) max_or = current_or;
+            if (current_xor > max_xor) max_xor = current_xor;
+        }
+    }
+    
+    // Print results
+    printf("%d\n", max_and);
+    printf("%d\n", max_or);
+    printf("%d\n", max_xor);
+}
+
+int main() {
+    // Read number of test cases
+    int t;
+    scanf("%d", &t);
+    
+    // Process each test case
+    for (int i = 0; i < t; i++) {
+        int n, k;
+        scanf("%d %d", &n, &k);
+        calculate_the_maximum(n, k);
+    }
+    
+    return 0;
+}
+
+--------------------------------------------------------------------------
+
+11) printing patterns
+
+#include <stdio.h>
+
+int main() {
+    // Declare variable
+    int n;
+    
+    // Read size of pattern
+    scanf("%d", &n);
+    
+    // Iterate over each row
+    for (int i = 1; i <= n; i++) {
+        // Iterate over each column
+        for (int j = 1; j <= n; j++) {
+            // Calculate distances to each side
+            int top = i;
+            int bottom = n - i + 1;
+            int left = j;
+            int right = n - j + 1;
+            
+            // Find minimum distance
+            int min_distance = top;
+            if (bottom < min_distance) min_distance = bottom;
+            if (left < min_distance) min_distance = left;
+            if (right < min_distance) min_distance = right;
+            
+            // Print the value with a space
+            printf("%d ", min_distance);
+        }
+        // Print newline after each row
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+---------------------------------------------------------------------------
+
+12) 1D array in c
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    // Declare variable for array size
+    int n;
+    
+    // Read array size
+    scanf("%d", &n);
+    
+    // Dynamically allocate array
+    int *arr = (int *)malloc(n * sizeof(int));
+    
+    // Initialize sum
+    long long sum = 0; // Use long long to handle large sums
+    
+    // Read array elements and compute sum
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+    
+    // Print sum
+    printf("%lld\n", sum);
+    
+    // Free allocated memory
+    free(arr);
+    
+    return 0;
+}
+
+-------------------------------------------------------------------------
+array reversal
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    // Declare variable for array size
+    int n;
+    
+    // Read array size
+    scanf("%d", &n);
+    
+    // Dynamically allocate array
+    int *arr = (int *)malloc(n * sizeof(int));
+    
+    // Read array elements
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Reverse the array in-place
+    for (int i = 0; i < n / 2; i++) {
+        // Swap elements at indices i and n-1-i
+        int temp = arr[i];
+        arr[i] = arr[n - 1 - i];
+        arr[n - 1 - i] = temp;
+    }
+    
+    // Print reversed array
+    for (int i = 0; i < n; i++) {
+        printf("%d", arr[i]);
+        if (i < n - 1) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+    
+    // Free allocated memory
+    free(arr);
+    
+    return 0;
+}
+
+------------------------------------------------------------------------------
+
+printing tokens
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    // Declare a string to store the input sentence
+    char s[100001]; // Constraint: string length <= 10^5
+    
+    // Read the entire sentence
+    scanf("%[^\n]", s);
+    
+    // Iterate through the string
+    for (int i = 0; s[i] != '\0'; i++) {
+        // Print character if it's not a space
+        if (s[i] != ' ') {
+            printf("%c", s[i]);
+        } else {
+            // Print newline when a space is encountered
+            printf("\n");
+        }
+    }
+    // Print newline after the last word
+    printf("\n");
+    
+    return 0;
+}
 
